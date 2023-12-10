@@ -1,0 +1,28 @@
+
+<h2 class="text-xl font-bold mb-5">Liste des films</h2>
+<table class="mb-9 bg-white shadow-md w-3/4">
+  <thead>
+    <tr class="bg-blue-950 rounded text-white">
+      <th scope="col" class="p-4 rounded-tl-lg">Nom</th>
+      <th scope="col" class="p-4">Année</th>
+      <th scope="col" class="p-4">Réalisateur</th>
+      <th scope="col" class="p-4">Synopsis</th>
+      <th scope="col" class="rounded-tr-lg">
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (movie of liste; track movie.nom; let index = $index){
+      <tr class="border-b border-gray-200 @{'bg-blue-500': movie.annee < 2000, 'bg-red-500': movie.annee >= 2000}">
+        <td class="px-4 py-3">{{ movie.nom}}</td>
+        <td class="px-4 py-3">{{ movie.annee }}</td>
+        <td class="px-4 py-3">{{ movie.realisateur }}</td>
+        <td class="px-4 py-3">{{ movie.synopsis }}</td>
+        <td class="px-4 py-3 flex">
+          <button class="bg-green-900 text-white font-bold py-2 px-4 rounded">Modifier</button>
+          <button (click)="removeItem(index)" class="bg-red-950 text-white font-bold py-2 px-4 rounded ml-2">Supprimer</button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
